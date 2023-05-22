@@ -17,13 +17,13 @@ const slides = [
 	}
 ]
 
-console.log(slides[0].image)
+
 
 const arrowLeft = document.querySelector(".arrow_left");
 const arrowRight = document.querySelector(".arrow_right");
 const dots = document.querySelector(".dots");
-const nombreSlides = slides.length;
-const texte = document.querySelector("#banner p");
+const numberSlides = slides.length;
+const text = document.querySelector("#banner p");
 const slideImg = document.querySelector(".banner-img");
 
 
@@ -31,7 +31,7 @@ const slideImg = document.querySelector(".banner-img");
 
 arrowLeft.addEventListener("click", function() {
 	dotLeft = 0;
-	for (let i=0; i<nombreSlides; i++){
+	for (let i=0; i<numberSlides; i++){
 		lookDot = allDot[i].classList;
 		if (lookDot.contains("dot_selected")){
 			dotLeft = i;
@@ -39,37 +39,37 @@ arrowLeft.addEventListener("click", function() {
 	}
 	allDot[dotLeft].classList.remove("dot_selected");
 	if (dotLeft==0) {
-		dotLeft=nombreSlides-1;
+		dotLeft=numberSlides-1;
 		
 	} 
 	else {dotLeft--;}
 	allDot[dotLeft].classList.add("dot_selected");
 
 	slideImg.setAttribute("src", "assets/images/slideshow/"+slides[dotLeft].image);
-	texte.innerHTML = slides[dotLeft].tagLine;
+	text.innerHTML = slides[dotLeft].tagLine;
 })
 
 arrowRight.addEventListener("click",function() {
 	dotRight = 0;
-	for (let i=1; i<nombreSlides; i++){
+	for (let i=1; i<numberSlides; i++){
 		lookDot = allDot[i].classList;
 		if (lookDot.contains("dot_selected")){
 			dotRight = i;
 		}
 	}
 	allDot[dotRight].classList.remove("dot_selected");
-	if (dotRight==nombreSlides-1) {
+	if (dotRight==numberSlides-1) {
 		dotRight = 0;
 	}
 	else {dotRight++;}
 	allDot[dotRight].classList.add("dot_selected");
 
 	slideImg.setAttribute("src", "assets/images/slideshow/"+slides[dotRight].image);
-	texte.innerHTML = slides[dotRight].tagLine;
+	text.innerHTML = slides[dotRight].tagLine;
 })
 
 
-for (let i=0; i<nombreSlides; i++){
+for (let i=0; i<numberSlides; i++){
 	const unfillDot = document.createElement("span");
 	dots.appendChild(unfillDot);
 	unfillDot.classList.add("dot");
